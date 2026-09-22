@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horizon Homes | Find Your Dream Property</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Properties | Horizon Homes</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-
-  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-left">
@@ -30,14 +28,16 @@
               <span>Theme</span>
               <span class="theme-icon" aria-hidden="true">☀️</span>
             </button>
-            <a href="properties.html" class="menu-option">View listings</a>
+            <a href="index.html" class="menu-option">Home</a>
+            <a href="why-us.html" class="menu-option">Why choose us</a>
+            <a href="contact.html" class="menu-option">Book a consultation</a>
           </div>
         </div>
         <a href="index.html" class="logo">Horizon<span>Homes</span></a>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="properties.html">Properties</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="properties.html" class="active">Properties</a></li>
         <li><a href="why-us.html">Why Us</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="contact.html#contact-form" class="nav-cta">List Property</a></li>
@@ -45,46 +45,34 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Find Your Perfect Place to Call Home</h1>
-      <p>Discover thousands of beautiful homes, apartments, and investment properties across the country.</p>
-      
-      <div class="search-box">
-        <input type="text" placeholder="City, neighborhood, or ZIP">
-        <select>
-          <option>Any Type</option>
-          <option>House</option>
-          <option>Apartment</option>
-          <option>Condo</option>
-          <option>Townhouse</option>
-        </select>
-        <select>
-          <option>Any Price</option>
-          <option>Under $300k</option>
-          <option>$300k – $600k</option>
-          <option>$600k – $1M</option>
-          <option>$1M+</option>
-        </select>
-        <button class="search-btn">Search</button>
-      </div>
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <h1>Explore Available Homes</h1>
+      <p>Browse a curated collection of premium homes, apartments, and investment opportunities in the areas buyers love most.</p>
     </div>
   </section>
 
-  <!-- FEATURED PROPERTIES -->
-  <section class="section" id="properties">
-    <div class="section-header">
-      <h2>Featured Properties</h2>
-      <p>Hand-picked homes that match what people are looking for right now</p>
+  <div class="page-grid">
+    <div class="listing-toolbar">
+      <input type="text" placeholder="Search city or ZIP" />
+      <select>
+        <option>Any Type</option>
+        <option>House</option>
+        <option>Apartment</option>
+        <option>Condo</option>
+      </select>
+      <select>
+        <option>Any Price</option>
+        <option>Under $500k</option>
+        <option>$500k - $1M</option>
+        <option>$1M+</option>
+      </select>
+      <button>Apply Filters</button>
     </div>
 
-    <div class="properties-grid">
-      <!-- Card 1 -->
+    <div class="properties-grid" style="margin-top: 2.5rem;">
       <div class="property-card">
-        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800')">
-          <span class="badge">For Sale</span>
-        </div>
+        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800')"></div>
         <div class="property-content">
           <div class="property-price">$875,000</div>
           <div class="property-title">Modern Family Home</div>
@@ -97,11 +85,8 @@
         </div>
       </div>
 
-      <!-- Card 2 -->
       <div class="property-card">
-        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800')">
-          <span class="badge">For Sale</span>
-        </div>
+        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800')"></div>
         <div class="property-content">
           <div class="property-price">$1,250,000</div>
           <div class="property-title">Luxury Waterfront Condo</div>
@@ -114,11 +99,8 @@
         </div>
       </div>
 
-      <!-- Card 3 -->
       <div class="property-card">
-        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800')">
-          <span class="badge">New Listing</span>
-        </div>
+        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800')"></div>
         <div class="property-content">
           <div class="property-price">$629,000</div>
           <div class="property-title">Charming Suburban House</div>
@@ -131,11 +113,8 @@
         </div>
       </div>
 
-      <!-- Card 4 -->
       <div class="property-card">
-        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cd00?w=800')">
-          <span class="badge">For Sale</span>
-        </div>
+        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cd00?w=800')"></div>
         <div class="property-content">
           <div class="property-price">$2,150,000</div>
           <div class="property-title">Contemporary Hillside Villa</div>
@@ -148,11 +127,8 @@
         </div>
       </div>
 
-      <!-- Card 5 -->
       <div class="property-card">
-        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800')">
-          <span class="badge">Price Drop</span>
-        </div>
+        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800')"></div>
         <div class="property-content">
           <div class="property-price">$489,000</div>
           <div class="property-title">Cozy Downtown Apartment</div>
@@ -165,11 +141,8 @@
         </div>
       </div>
 
-      <!-- Card 6 -->
       <div class="property-card">
-        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800')">
-          <span class="badge">For Sale</span>
-        </div>
+        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800')"></div>
         <div class="property-content">
           <div class="property-price">$945,000</div>
           <div class="property-title">Spacious Family Estate</div>
@@ -182,47 +155,8 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FEATURES -->
-  <section class="section features" id="features">
-    <div class="section-header">
-      <h2>Why Choose Horizon Homes</h2>
-      <p>We make buying and selling simple, transparent, and enjoyable</p>
-    </div>
-
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🏠</div>
-        <h3>Wide Selection</h3>
-        <p>Thousands of verified listings updated daily across all price ranges and locations.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔍</div>
-        <h3>Smart Search</h3>
-        <p>Powerful filters and map view help you find exactly what you’re looking for in seconds.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🛡️</div>
-        <h3>Trusted Agents</h3>
-        <p>Work with experienced, highly-rated local real estate professionals.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📱</div>
-        <h3>Seamless Experience</h3>
-        <p>Save favorites, schedule tours, and get instant alerts — all from one place.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta" id="contact">
-    <h2>Ready to find your next home?</h2>
-    <p>Join thousands of happy buyers and sellers. Start your search today or list your property with us.</p>
-    <button class="cta-btn">Get Started →</button>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
@@ -257,9 +191,7 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      © 2026 Horizon Homes. All rights reserved.
-    </div>
+    <div class="footer-bottom">© 2026 Horizon Homes. All rights reserved.</div>
   </footer>
 
   <script>
@@ -306,6 +238,5 @@
       });
     });
   </script>
-
 </body>
 </html>

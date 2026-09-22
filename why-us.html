@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Us | Horizon Homes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <div class="menu-panel-wrap">
+          <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span class="hamburger" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+          <div class="floating-menu" id="floatingMenu" aria-hidden="true">
+            <div class="menu-header">
+              <strong>Quick tools</strong>
+              <button type="button" class="menu-close" aria-label="Close menu">×</button>
+            </div>
+            <button type="button" class="menu-option theme-toggle" data-theme-toggle>
+              <span>Theme</span>
+              <span class="theme-icon" aria-hidden="true">☀️</span>
+            </button>
+            <a href="properties.html" class="menu-option">Explore homes</a>
+            <a href="contact.html" class="menu-option">Contact us</a>
+            <a href="index.html" class="menu-option">Back to home</a>
+          </div>
+        </div>
+        <a href="index.html" class="logo">Horizon<span>Homes</span></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="properties.html">Properties</a></li>
+        <li><a href="why-us.html" class="active">Why Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html#contact-form" class="nav-cta">List Property</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <h1>Why Clients Choose Horizon Homes</h1>
+      <p>We combine local market expertise, transparent guidance, and modern tools to help you make confident real-estate decisions.</p>
+    </div>
+  </section>
+
+  <section class="page-grid">
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🏠</div>
+        <h3>Wide Selection</h3>
+        <p>Thousands of verified listings updated daily across all price ranges and locations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Smart Search</h3>
+        <p>Powerful filters and map view help you find exactly what you’re looking for in seconds.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Trusted Agents</h3>
+        <p>Work with experienced, highly-rated local real estate professionals.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Seamless Experience</h3>
+        <p>Save favorites, schedule tours, and get instant alerts — all from one place.</p>
+      </div>
+    </div>
+
+    <div class="info-panel" style="margin-top: 2rem;">
+      <h3>What makes us different</h3>
+      <p>At Horizon Homes, we believe buying or selling a property should feel clear, personalized, and stress-free. From your first search to final closing, our team focuses on strategy, transparency, and a smooth experience from start to finish.</p>
+      <ul class="info-list">
+        <li><strong>Transparent process</strong>Clear guidance, honest pricing, and no surprises.</li>
+        <li><strong>Local expertise</strong>Market insight tailored to your neighborhood and goals.</li>
+        <li><strong>Client-first approach</strong>Every decision is centered around your timeline and lifestyle.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>Horizon Homes</h3>
+        <p>Helping people find their perfect place since 2018. Transparent, modern, and built for today’s buyers and sellers.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">Buy</a></li>
+          <li><a href="#">Rent</a></li>
+          <li><a href="#">Sell</a></li>
+          <li><a href="#">Agents</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Guides</a></li>
+          <li><a href="#">Mortgage Calculator</a></li>
+          <li><a href="#">Help Center</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Horizon Homes. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const body = document.body;
+    const menuToggle = document.querySelector('.menu-toggle');
+    const floatingMenu = document.getElementById('floatingMenu');
+    const closeMenuBtn = document.querySelector('.menu-close');
+    const themeToggleButtons = document.querySelectorAll('[data-theme-toggle]');
+
+    const syncThemeButton = () => {
+      const isDark = body.classList.contains('dark-theme');
+      themeToggleButtons.forEach((button) => {
+        const icon = button.querySelector('.theme-icon');
+        if (icon) {
+          icon.textContent = isDark ? '🌙' : '☀️';
+        }
+      });
+    };
+
+    const savedTheme = localStorage.getItem('horizon-theme');
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-theme');
+    }
+    syncThemeButton();
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = floatingMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      floatingMenu.setAttribute('aria-hidden', String(!isOpen));
+    });
+
+    closeMenuBtn.addEventListener('click', () => {
+      floatingMenu.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      floatingMenu.setAttribute('aria-hidden', 'true');
+    });
+
+    themeToggleButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        body.classList.toggle('dark-theme');
+        const isDark = body.classList.contains('dark-theme');
+        localStorage.setItem('horizon-theme', isDark ? 'dark' : 'light');
+        syncThemeButton();
+      });
+    });
+  </script>
+</body>
+</html>
