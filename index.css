@@ -108,6 +108,31 @@
       color: var(--primary);
     }
 
+    .desktop-theme-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      background: transparent;
+      color: var(--text-soft);
+      font: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.4rem 0.15rem;
+      cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-theme-toggle:hover {
+      color: var(--primary);
+    }
+
     .nav-links a.active {
       color: var(--primary);
       border-color: var(--primary);
@@ -238,6 +263,10 @@
       border-radius: 50%;
       background: rgba(37, 99, 235, 0.12);
       font-size: 1rem;
+    }
+
+    .menu-panel-wrap {
+      display: none;
     }
 
     /* ========== HERO ========== */
@@ -433,7 +462,7 @@
 
     /* ========== FEATURES ========== */
     .features {
-      background: white;
+      background: var(--bg-soft);
     }
 
     .features-grid {
@@ -488,8 +517,7 @@
       border-radius: 24px;
       margin: 0 1.5rem 5rem;
       max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-inline: 15px;
     }
 
     .cta h2 {
@@ -723,6 +751,14 @@
 
     /* ========== RESPONSIVE ========== */
     @media (max-width: 768px) {
+      .menu-panel-wrap {
+        display: block;
+      }
+
+      .desktop-theme-item {
+        display: none;
+      }
+
       .nav-links {
         display: none;
       }
