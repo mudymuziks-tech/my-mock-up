@@ -55,24 +55,24 @@
       <h1>Find Your Perfect Place to Call Home</h1>
       <p>Discover thousands of beautiful homes, apartments, and investment properties across the country.</p>
       
-      <div class="search-box">
-        <input type="text" placeholder="City, neighborhood, or ZIP">
-        <select>
+      <form class="search-box" action="properties.html" method="get">
+        <input type="search" name="location" placeholder="City, neighborhood, or ZIP" aria-label="City, neighborhood, or ZIP">
+        <select name="type" aria-label="Property type">
           <option>Any Type</option>
           <option>House</option>
           <option>Apartment</option>
           <option>Condo</option>
           <option>Townhouse</option>
         </select>
-        <select>
+        <select name="price" aria-label="Price range">
           <option>Any Price</option>
           <option>Under $300k</option>
           <option>$300k – $600k</option>
           <option>$600k – $1M</option>
           <option>$1M+</option>
         </select>
-        <button class="search-btn">Search</button>
-      </div>
+        <button class="search-btn" type="submit">Search</button>
+      </form>
     </div>
   </section>
 

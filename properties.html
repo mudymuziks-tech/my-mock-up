@@ -57,25 +57,28 @@
   </section>
 
   <div class="page-grid">
-    <div class="listing-toolbar">
-      <input type="text" placeholder="Search city or ZIP" />
-      <select>
+    <form class="listing-toolbar" id="listingSearch" method="get">
+      <input type="search" name="location" placeholder="Search city or ZIP" aria-label="Search city or ZIP" />
+      <select name="type" aria-label="Property type">
         <option>Any Type</option>
         <option>House</option>
         <option>Apartment</option>
         <option>Condo</option>
+        <option>Townhouse</option>
       </select>
-      <select>
+      <select name="price" aria-label="Price range">
         <option>Any Price</option>
-        <option>Under $500k</option>
-        <option>$500k - $1M</option>
+        <option>Under $300k</option>
+        <option>$300k – $600k</option>
+        <option>$600k – $1M</option>
         <option>$1M+</option>
       </select>
-      <button>Apply Filters</button>
-    </div>
+      <button type="submit">Apply Filters</button>
+    </form>
 
-    <div class="properties-grid" style="margin-top: 2.5rem;">
-      <div class="property-card">
+    <p class="search-results-message" id="searchResultsMessage" aria-live="polite"></p>
+    <div class="properties-grid" id="propertyResults" style="margin-top: 2.5rem;">
+      <div class="property-card" data-type="House" data-price="875000">
         <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800')"></div>
         <div class="property-content">
           <div class="property-price">$875,000</div>
@@ -89,7 +92,7 @@
         </div>
       </div>
 
-      <div class="property-card">
+      <div class="property-card" data-type="Condo" data-price="1250000">
         <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800')"></div>
         <div class="property-content">
           <div class="property-price">$1,250,000</div>
@@ -103,7 +106,7 @@
         </div>
       </div>
 
-      <div class="property-card">
+      <div class="property-card" data-type="House" data-price="629000">
         <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800')"></div>
         <div class="property-content">
           <div class="property-price">$629,000</div>
@@ -117,7 +120,7 @@
         </div>
       </div>
 
-      <div class="property-card">
+      <div class="property-card" data-type="Villa" data-price="2150000">
         <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cd00?w=800')"></div>
         <div class="property-content">
           <div class="property-price">$2,150,000</div>
@@ -131,7 +134,7 @@
         </div>
       </div>
 
-      <div class="property-card">
+      <div class="property-card" data-type="Apartment" data-price="489000">
         <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800')"></div>
         <div class="property-content">
           <div class="property-price">$489,000</div>
@@ -145,7 +148,7 @@
         </div>
       </div>
 
-      <div class="property-card">
+      <div class="property-card" data-type="House" data-price="945000">
         <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800')"></div>
         <div class="property-content">
           <div class="property-price">$945,000</div>
@@ -155,6 +158,34 @@
             <span>🛏 4 Beds</span>
             <span>🛁 3.5 Baths</span>
             <span>📐 2,900 sqft</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="property-card" data-type="Townhouse" data-price="285000">
+        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800')"></div>
+        <div class="property-content">
+          <div class="property-price">$285,000</div>
+          <div class="property-title">Bright Garden Townhouse</div>
+          <div class="property-location">📍 Portland, Oregon</div>
+          <div class="property-meta">
+            <span>🛏 2 Beds</span>
+            <span>🛁 1.5 Baths</span>
+            <span>📐 1,050 sqft</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="property-card" data-type="House" data-price="749000">
+        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800')"></div>
+        <div class="property-content">
+          <div class="property-price">$749,000</div>
+          <div class="property-title">Sunlit Florida Retreat</div>
+          <div class="property-location">📍 Orlando, Florida</div>
+          <div class="property-meta">
+            <span>🛏 3 Beds</span>
+            <span>🛁 2 Baths</span>
+            <span>📐 2,100 sqft</span>
           </div>
         </div>
       </div>
@@ -241,6 +272,54 @@
         syncThemeButton();
       });
     });
+
+    const listingSearch = document.getElementById('listingSearch');
+    const propertyResults = document.getElementById('propertyResults');
+    const searchResultsMessage = document.getElementById('searchResultsMessage');
+    const searchParams = new URLSearchParams(window.location.search);
+    const locationInput = listingSearch.elements.location;
+    const typeInput = listingSearch.elements.type;
+    const priceInput = listingSearch.elements.price;
+
+    locationInput.value = searchParams.get('location') || '';
+    typeInput.value = searchParams.get('type') || 'Any Type';
+    priceInput.value = searchParams.get('price') || 'Any Price';
+
+    const priceMatches = (price, range) => {
+      if (range === 'Under $300k') return price < 300000;
+      if (range === 'Under $500k') return price < 500000;
+      if (range === '$300k – $600k' || range === '$500k - $1M') return price >= 300000 && price <= 1000000;
+      if (range === '$600k – $1M') return price >= 600000 && price <= 1000000;
+      if (range === '$1M+') return price > 1000000;
+      return true;
+    };
+
+    const filterProperties = () => {
+      const location = locationInput.value.trim().toLowerCase();
+      const type = typeInput.value;
+      const price = priceInput.value;
+      let visibleCount = 0;
+
+      propertyResults.querySelectorAll('.property-card').forEach((card) => {
+        const matchesLocation = !location || card.textContent.toLowerCase().includes(location);
+        const matchesType = type === 'Any Type' || card.dataset.type === type;
+        const matchesPrice = priceMatches(Number(card.dataset.price), price);
+        const isVisible = matchesLocation && matchesType && matchesPrice;
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+
+      searchResultsMessage.textContent = `${visibleCount} ${visibleCount === 1 ? 'property' : 'properties'} found`;
+    };
+
+    listingSearch.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const params = new URLSearchParams(new FormData(listingSearch));
+      window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
+      filterProperties();
+    });
+
+    filterProperties();
   </script>
 </body>
 </html>
