@@ -138,22 +138,23 @@
       border-color: var(--primary);
     }
 
-    .nav-cta {
+    .nav-links .nav-cta {
       background: var(--primary);
       color: white !important;
-      padding: 0.7rem 1.4rem;
+      padding: 0.7rem 1.6rem;
       border-radius: 8px;
       border-bottom: 0 !important;
       font-weight: 600;
+      font-size: 0.95rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 42px;
       line-height: 1;
-      padding-inline: 1.35rem;
+      padding-inline: 1.6rem;
     }
 
-    .nav-cta:hover {
+    .nav-links .nav-cta:hover {
       background: var(--primary-dark) !important;
     }
 
